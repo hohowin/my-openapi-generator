@@ -14,6 +14,8 @@ Type in: `https://raw.githubusercontent.com/openapitools/openapi-generator/maste
 
 ## OpenAPI Generator CLI
 
+Youtube: [Introducing OpenAPI Generator](https://www.youtube.com/watch?v=t4jaTC7QjMg&t=286s)
+
 ```bash
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:v6.0.1 generate \
 -g spring \
