@@ -9,13 +9,13 @@ WebSite: [Generators List](https://openapi-generator.tech/docs/generators/)
 docker run -d -e GENERATOR_HOST=http://127.0.0.1 -p 80:8080 openapitools/openapi-generator-online:v6.0.1
 ```
 
-Go to: http://localhost
-Type in: `https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml`
+1. Go to: http://localhost
+2. Type in: `https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml`
 
 ## OpenAPI Generator CLI
 
-Youtube: [Introducing OpenAPI Generator](https://www.youtube.com/watch?v=t4jaTC7QjMg&t=286s)
-Blog: [OpenAPI generator](https://qiita.com/amuyikam/items/e8a45daae59c68be0fc8)
+- Youtube: [Introducing OpenAPI Generator](https://www.youtube.com/watch?v=t4jaTC7QjMg&t=286s)
+- Blog: [OpenAPI generator](https://qiita.com/amuyikam/items/e8a45daae59c68be0fc8)
 
 ```bash
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:v6.0.1 generate \
@@ -34,3 +34,32 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli:v6.0.1 gen
 \
 -p sourceFolder=src/main
 ```
+
+Then in `pom.xml`, add plugin:
+
+```json
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>build-helper-maven-plugin</artifactId>
+    <version>3.3.0</version>
+    <executions>
+        <execution>
+            <phase>generate-sources</phase>
+            <goals>
+                <goal>add-source</goal>
+            </goals>
+            <configuration>
+                <sources>src/main</sources>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+Then type:
+
+```bash
+mvn spring-boot:run
+```
+
+Then go to: http://localhost:8080
